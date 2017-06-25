@@ -13,15 +13,19 @@ class Template
         $this->_action = $action;
     }
 
-    /** Set Variables **/
-
+    /**
+     * Set Variables
+     * @param $name
+     * @param $value
+     */
     function set($name, $value)
     {
         $this->variables[$name] = $value;
     }
 
-    /** Display Template **/
-
+    /**
+     * Display Template
+     */
     function render()
     {
         extract($this->variables);

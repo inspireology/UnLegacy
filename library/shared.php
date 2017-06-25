@@ -1,7 +1,10 @@
 <?php
+//TODO: Add PHPDoc Comments
+//TODO: Add comments from the tutorial
 
-/** Check if environment is development and display errors **/
-
+/**
+ * Check if environment is development and display errors
+ */
 function setReporting()
 {
     if (DEVELOPMENT_ENVIRONMENT == true) {
@@ -15,14 +18,21 @@ function setReporting()
     }
 }
 
-/** Check for Magic Quotes and remove them **/
-
+/**
+ * Check for Magic Quotes and remove them
+ * @param $value
+ * @return array|string
+ */
 function stripSlashesDeep($value)
 {
+    //TODO: http://php.net/manual/en/security.magicquotes.disabling.php disable them all toghether and check PHP version
     $value = is_array($value) ? array_map('stripSlashesDeep', $value) : stripslashes($value);
     return $value;
 }
 
+/**
+ * Remove Magic Quotes for security
+ */
 function removeMagicQuotes()
 {
     if (get_magic_quotes_gpc()) {
@@ -32,8 +42,9 @@ function removeMagicQuotes()
     }
 }
 
-/** Check register globals and remove them **/
-
+/**
+ * Check register globals and remove them
+ */
 function unregisterGlobals()
 {
     if (ini_get('register_globals')) {
@@ -48,8 +59,9 @@ function unregisterGlobals()
     }
 }
 
-/** Main Call Function **/
-
+/**
+ * Main Call Function
+ */
 function callHook()
 {
     global $url;
@@ -76,10 +88,13 @@ function callHook()
     }
 }
 
-/** Autoload any classes that are required **/
-
+/**
+ * Autoload any classes that are required
+ * @param $className
+ */
 function __autoload($className)
 {
+    //TODO: prioritise the autoloader from the
     if (file_exists(ROOT . DS . 'library' . DS . strtolower($className) . '.class.php')) {
         require_once(ROOT . DS . 'library' . DS . strtolower($className) . '.class.php');
     } else if (file_exists(ROOT . DS . 'application' . DS . 'controllers' . DS . strtolower($className) . '.php')) {

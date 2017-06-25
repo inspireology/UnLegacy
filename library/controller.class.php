@@ -8,6 +8,14 @@ class Controller
     protected $_action;
     protected $_template;
 
+    //TODO: Replace with dependency injection
+
+    /**
+     * Controller constructor.
+     * @param $model
+     * @param $controller
+     * @param $action
+     */
     function __construct($model, $controller, $action)
     {
 
@@ -20,11 +28,18 @@ class Controller
 
     }
 
+    /**
+     * @param $name
+     * @param $value
+     */
     function set($name, $value)
     {
         $this->_template->set($name, $value);
     }
 
+    /**
+     * Render template on destruct
+     */
     function __destruct()
     {
         $this->_template->render();
