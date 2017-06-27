@@ -9,6 +9,7 @@ class Controller
     protected $_template;
 
     //TODO: Replace with dependency injection
+
     /**
      * Controller constructor.
      * @param $model

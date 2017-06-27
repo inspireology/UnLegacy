@@ -1,7 +1,6 @@
 <?php
 //TODO: replace with mysqli_query
 //TODO: fix mysqli errors
-//TODO: PSR4 Namespaces
 class SQLQuery
 {
     protected $_dbHandle;
@@ -28,6 +27,7 @@ class SQLQuery
             return 0;
         }
     }
+
 
     /**
      * Disconnects from database
@@ -61,6 +61,7 @@ class SQLQuery
         return $this->query($query, 1);
     }
 
+
     /**
      * Custom SQL Query
      * @param $query
@@ -82,6 +83,7 @@ class SQLQuery
                 array_push($table, mysqli_field_table($this->_result, $i));
                 array_push($field, mysqli_field_name($this->_result, $i));
             }
+
 
             while ($row = mysqli_fetch_row($this->_result)) {
                 for ($i = 0; $i < $numOfFields; ++$i) {
